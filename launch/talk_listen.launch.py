@@ -7,11 +7,11 @@ import launch_ros.actions
 def generate_launch_description():
 
     baito_publisher = launch_ros.actions.Node(
-         package='ROS2mypkg',      #パッケージの名前を指定
+         package='ros2mypkg',      #パッケージの名前を指定
          executable='baito_publisher',  #実行するファイルの指定
          )
     listener = launch_ros.actions.Node(
-         package='ROS2mypkg',
+         package='ros2mypkg',
          executable='listener',
          output='screen'        #ログを端末に出すための設定
          )

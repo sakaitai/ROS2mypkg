@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'ROS2mypkg'
+package_name = 'ros2mypkg'
 
 setup(
     name=package_name,
@@ -23,8 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'baito_publisher = ROS2mypkg.baito_publisher:main',
-            'listener = ROS2mypkg.listener:main',
+            'baito_publisher = ros2mypkg.baito_publisher:main',
+            'listener = ros2mypkg.listener:main',
         ],
     },
 )
