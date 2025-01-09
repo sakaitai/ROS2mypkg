@@ -1,15 +1,13 @@
+name: test
+on: push
 jobs:
-  test:
-    runs-on: ubuntu-20.04
-    container: osrf/ros:foxy-desktop
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Debug environment
-        run: ls -l /opt/ros/foxy/setup.bash
-      - name: Run tests
-        shell: bash
-        run: |
-          cd /root/ros2_ws
-          bash -xv ./src/ros2mypkg/test/test.bash /root
-
+ test:
+   runs-on: ubuntu-22.04
+   container: ryuichiueda/ubuntu22.04-ros2:latest
+   steps:
+    - uses: actions/checkout@v2
+    - name: build and test
+      run: |
+        rsync -av ./ /root/ros2_ws/src/ros2mypkg/
+        cd /root/ros2_ws
+        bash -xv ./src/ros2mypkg/test/test.bash /root
