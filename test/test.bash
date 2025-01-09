@@ -14,8 +14,4 @@ timeout 10 ros2 run ros2mypkg baito_publisher > /tmp/ros2mypkg.log &
 
 sleep 2
 
-cat /tmp/mypkg.log | grep -e '秒 とんかつバイト: ' -e '円'
-
-
-kill %1
-
+cat /tmp/mypkg.log | grep -e '秒 : ' -e '円'
