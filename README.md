@@ -1,12 +1,12 @@
 # ロボットシステム学のROS2のパッケージです
+[![test](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml)
 
-
-# 時給秒換算システム
+## 時給秒換算システム
 このリポジトリは、自分の働いているバイト先の時給を一秒ごとに教えてくれるROS2のノードです。
 
 ## 概要
-労働時間が8時間を超えたら休憩を知らせるための警告が出ます
-
+一秒ごとに秒換算されたバイトの時給が足されていきます。
+労働時間が8時間を超えたら休憩を知らせるための警告が出ます。
 
 
 # 使用方法
@@ -14,11 +14,23 @@
 2. ノードを起動し、
 
 # 実行例
-t
+
+
+data: '経過時間: 7秒,累計収入: 2円,'
+---
+data: '経過時間: 8秒,累計収入: 2円,'
+---
+data: '経過時間: 9秒,累計収入: 3円,'
+---
+
+  以下は八時間超えた時に出るメッセージです
+  
+data: '経過時間: 14507秒,累計収入: 5238円,※注意: 8時間を超えました！休憩 を取ってください。'
+---
 
 # テスト環境
 Ubuntu 20.04
 
 ## ライセンスと著作権
-- このソフトウェアパッケージは[3条項BSDライセンス](https://github.com/sakaitai/mypkg/blob/main/LICENSE)の下、再頒布および使用が許可されています。
+- このソフトウェアパッケージは[3条項BSDライセンス](https://github.com/sakaitai/ros2mypkg/blob/main/LICENSE)の下、再頒布および使用が許可されています。
 -  *© 2025 Taisei Sakai*
