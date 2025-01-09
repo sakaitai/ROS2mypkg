@@ -2,11 +2,11 @@
 [![test](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml)
 
 ## 時給秒換算システム
-このリポジトリは、自分の働いているバイト先の時給を一秒ごとに教えてくれるROS2のノードです。
+- このリポジトリは、自分の働いているバイト先の時給を一秒ごとに教えてくれるROS2のノードです。
 
 ## 概要
-一秒ごとに秒換算されたバイトの時給が足されていきます。
-労働時間が8時間を超えたら休憩を知らせるための警告が出ます。
+- 一秒ごとに秒換算されたバイトの時給が足されていきます。
+- 労働時間が8時間を超えたら休憩を知らせるための警告が出ます。
 
 
 ## 使用方法
