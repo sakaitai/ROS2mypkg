@@ -9,6 +9,7 @@ cd $dir/ros2_ws
 colcon build
 
 # ROS 2 のセットアップスクリプトをソース
+source /opt/ros/foxy/setup.bash
 source $dir/ros2_ws/install/setup.bash
 
 # ノードを実行し、ログを保存
