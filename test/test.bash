@@ -7,16 +7,14 @@ dir=~
 
 cd $dir/ros2_ws
 colcon build
-source $dir/ros2_ws/install/setup.bash  # ROS 2ワークスペースの環境設定
+source $dir/ros2_ws/install/setup.bash
 
-# タイムアウトでtalkerノードを実行し、ログを/tmp/mypkg.logに保存
-timeout 10 ros2 run mypkg talker > /tmp/mypkg.log &  # バックグラウンドで実行
+timeout 10 ros2 run ros2mypkg baito_publisher > /tmp/ros2mypkg.log &  
 
-# 少し待ってからログを確認（1秒ごとに更新されるので）
+
 sleep 2
 
-# ログファイルから特定のメッセージが含まれているかをgrepでチェック
 cat /tmp/mypkg.log | grep -e '秒 とんかつバイト: ' -e '円'
 
-# プロセスを終了する
+
 kill %1
