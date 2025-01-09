@@ -1,7 +1,6 @@
-# ロボットシステム学のROS2のパッケージです
+# とんかつバイト時給秒換算
 [![test](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml/badge.svg)](https://github.com/sakaitai/ros2mypkg/actions/workflows/test.yml)
 
-## とんかつバイト時給秒換算システム
 - このリポジトリは、自分の働いているバイト先の時給を1秒ごとに教えてくれるROS2のノードです。
 - 1秒ごとに秒換算されたバイトの時給が足されていきます。時給は1300円です。
 - 労働時間が8時間を超えたら休憩を知らせるための警告が出ます。
