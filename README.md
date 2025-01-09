@@ -32,9 +32,9 @@ data: '経過時間: 28801秒,累計収入: 10400円,※注意: 8時間を超え
 ```
 
 ## 動作環境
-Ubuntu 20.04
+- Ubuntu 20.04
 
-ROS2バージョン foxy
+- ROS2バージョン foxy
 
 ## ライセンスと著作権
 - このソフトウェアパッケージは[3条項BSDライセンス](https://github.com/sakaitai/ros2mypkg/blob/main/LICENSE)の下、再頒布および使用が許可されています。
