@@ -18,13 +18,11 @@
 
 ```
 $ ros2 run ros2mypkg baito_publisher
-
 ```
 別の端末で以下のコマンドで確認
 
 ```
 $ ros2 topic echo /baito_time
-
 ```
 
 実行結果
