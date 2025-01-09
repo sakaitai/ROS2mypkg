@@ -2,12 +2,13 @@ name: test
 on: push
 jobs:
   test:
-    runs-on: ubuntu-20.04  # FoxyはUbuntu 20.04で動作します
-    container: osrf/ros:foxy-desktop  # Foxyの公式Dockerイメージ
+    runs-on: ubuntu-20.04
+    container: osrf/ros:foxy-desktop
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up ROS 2 workspace
+        shell: bash
         run: |
           mkdir -p /root/ros2_ws/src/ros2mypkg/
           cp -r ./* /root/ros2_ws/src/ros2mypkg/
@@ -16,11 +17,13 @@ jobs:
           source install/setup.bash
 
       - name: Verify ROS 2 installation
+        shell: bash
         run: |
           source /opt/ros/foxy/setup.bash
           ros2 --version
 
       - name: Run tests
+        shell: bash
         run: |
           cd /root/ros2_ws
           bash -xv ./src/ros2mypkg/test/test.bash /root
