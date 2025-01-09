@@ -7,18 +7,29 @@ dir=~
 
 cd "$dir/ros2_ws"
 
-# ROS 2ワークスペースのセットアップスクリプトをロード
-if [ -f "$dir/ros2_ws/install/setup.bash" ]; then
-    source "$dir/ros2_ws/install/setup.bash"
-else
-    echo "エラー: ROS 2ワークスペースのセットアップスクリプトが見つかりません。"
+# ワークスペースをビルド
+colcon build
+if [ $? -ne 0 ]; then
+    echo "エラー: colcon buildに失敗しました。"
     exit 1
 fi
 
-# ros2コマンドが利用可能か確認
+# ROS 2環境のセットアップ
+if [ -f "/opt/ros/foxy/setup.bash" ]; then
+    source "/opt/ros/foxy/setup.bash"
+else
+    echo "エラー: ROS 2のセットアップスクリプトが見つかりません。"
+    exit 1
+fi
+
+# パスを明示的に設定
+export PATH=/opt/ros/foxy/bin:$PATH
+echo "環境変数PATH: $PATH"
+
+# ros2コマンドの確認
 ros2 --help > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo "エラー: ros2コマンドが利用できません。環境設定を確認してください。"
+    echo "エラー: ros2コマンドが利用できません。"
     exit 1
 fi
 
@@ -29,7 +40,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# ログファイルの解析
+# ログの解析
 grep -e '経過時間' -e '累計収入' -e '注意' /tmp/ros2mypkg.log
 if [ $? -ne 0 ]; then
     echo "エラー: 必要な情報がログに見つかりませんでした。"
