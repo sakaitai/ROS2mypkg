@@ -48,6 +48,9 @@ data: '経過時間: 28801秒,累計収入: 10400円※注意: 8時間を超え�
 
 - ROS2バージョン foxy
 
+## 注意事項
+listener.pyはテスト用です。
+
 ## ライセンスと著作権
 - このソフトウェアパッケージは[3条項BSDライセンス](https://github.com/sakaitai/ros2mypkg/blob/main/LICENSE)の下、再頒布および使用が許可されています。
 -  *© 2025 Taisei Sakai*
