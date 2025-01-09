@@ -9,7 +9,7 @@ cd $dir/ros2_ws
 colcon build
 source $dir/ros2_ws/install/setup.bash
 
-timeout 10 ros2 run ros2mypkg baito_publisher > /tmp/ros2mypkg.log &  
+timeout 50 ros2 run ros2mypkg baito_publisher > /tmp/ros2mypkg.log &  
 
 
 sleep 2
