@@ -33,8 +33,9 @@ data: '経過時間: 9秒,累計収入: 3円'
 
 ## 動作環境
 - Ubuntu 20.04
-
 - ROS2バージョン foxy
+- CI: GitHub Actions (Ubuntu 20.04)
+  
 
 ## 注意事項
 listener.pyはテスト用です。
