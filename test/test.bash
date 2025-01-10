@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2024 TAISEI SAKAI
+# SPDX-FileCopyrightText: 2024 Taisei Sakai
 # SPDX-License-Identifier: BSD-3-Clause
 
 # デフォルトの作業ディレクトリ
@@ -9,13 +9,18 @@ dir=~
 # ROS2 ワークスペースに移動してビルド
 cd $dir/ros2_ws || exit 1
 colcon build || exit 1
-source $dir/ros2_ws/install/setup.bash || exit 1
+
+# ROS2 環境をセットアップ
+source $dir/ros2_ws/install/setup.bash || {
+    echo "ERROR: ROS 2 環境のセットアップに失敗しました。" >&2
+    exit 1
+}
 
 # テスト用のログファイル
 log_file="/tmp/ros2mypkg.log"
 
 # ROS2 ノードをバックグラウンドで起動
-timeout 50 ros2 run ros2mypkg baito_publisher > "$log_file" &
+timeout 50 ros2 run ros2mypkg baito_publisher > "$log_file" 2>&1 &
 ros_pid=$!
 
 # プロセスが起動するのを待つ
