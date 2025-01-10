@@ -3,31 +3,23 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
+from std_msgs.msg import Int32
 import time
 
 class BaitoPublisher(Node):
 
     def __init__(self):
         super().__init__('baito_publisher')  # ノード名
-        self.publisher_ = self.create_publisher(String, 'baito_time', 10)  # トピック名
+        self.publisher_ = self.create_publisher(Int32, 'baito_time', 10)  # トピック名
         self.start_time = time.time()
         self.timer = self.create_timer(1.0, self.timer_callback)
 
         self.hourly_rate = 1300  # 時給
 
     def timer_callback(self):
-        elapsed_time = time.time() - self.start_time
-        total_seconds = int(elapsed_time)
-        earned_money = (total_seconds / 3600) * self.hourly_rate
-
-        # トピックに送信するメッセージ
-        msg = String()
-        msg.data = (
-            f'経過時間: {total_seconds}秒 '
-            f'累計収入: {int(earned_money)}円'
-        )
-        self.publisher_.publish(msg)
+        elapsed_time = int(time.time() - self.start_time)  # 経過秒数
+        earned_money = int((elapsed_time / 3600) * self.hourly_rate)  # 累計収入（整数型）
+        self.publisher_.publish(Int32(data=earned_money))  # 累計収入のみを送信
 
 def main(args=None):
     rclpy.init(args=args)
