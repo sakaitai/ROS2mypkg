@@ -2,6 +2,8 @@
 # SPDX-FileCopyrightText: 2024 Taisei Sakai
 # SPDX-License-Identifier: BSD-3-Clause
 
+set -x  # デバッグモード
+
 # ロケール設定
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
@@ -20,15 +22,21 @@ source $dir/ros2_ws/install/setup.bash || {
     exit 1
 }
 
+# 'ros2' コマンドが使用可能か確認
+if ! which ros2 > /dev/null; then
+    echo "ERROR: ros2 コマンドが見つかりません。" >&2
+    exit 1
+fi
+
+# テスト用のログファイル
+log_file="/tmp/ros2mypkg_topic.log"
+
 # ROS2 ノードをバックグラウンドで起動
 timeout 50 ros2 run ros2mypkg baito_publisher &
 ros_pid=$!
 
 # プロセスが起動するのを待つ
 sleep 2
-
-# テスト用のログファイル
-log_file="/tmp/ros2mypkg_topic.log"
 
 # トピックを監視し、出力をログに記録
 timeout 10 ros2 topic echo /baito_time > "$log_file" 2>&1 || {
